@@ -22,7 +22,7 @@ app.use(cors({
 app.use('/api/user', User)
 
 //connect to db
-mongoose.connect()
+mongoose.connect(process.env.MONGO_LOCAL_URI)
 
 //listen for requests
 app.listen(process.env.PORT || 3005, () => {
