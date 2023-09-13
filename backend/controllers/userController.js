@@ -1,5 +1,11 @@
 const User = require('../models/userModel')
 const mongoose = require('mongoose')
+const jwt = require('jsonwebtoken')
+
+//create jwt function
+const createToken = (_id) => {
+    return jwt.sign({_id}, process.env.SECRET, {expiresIn: '3d'})
+}
 
 //get all users
 const getUsers = async (req, res) => {
@@ -24,14 +30,14 @@ const getUser = async (req, res) => {
     res.status(200).json(user)
 } 
 
-//create a new user 
+//create a new user | sign up 
 const createUser = async (req, res) => {
-    const {userName, password, name, lastName, age, gender, professions, skills, experiences, phoneNumber, email} = req.body
+    const {email, password, name, lastName} = req.body
 
     //Show empty fields
     let emptyFields = []
-    if(!userName){
-        emptyFields.push('userName')
+    if(!email){
+        emptyFields.push('email')
     }
     if(!password){
         emptyFields.push('password')
@@ -47,8 +53,12 @@ const createUser = async (req, res) => {
     }
 
     try {
-        const user = await User.create({userName, password, name, lastName, age, gender, professions, skills, experiences, phoneNumber, email})
-        res.status(200).json(user)
+        const user = await User.signup(email, password, name, lastName)
+
+        //create token
+        const token = createToken(user._id)
+
+        res.status(200).json({email, token})
     } catch (error) {
         res.status(400).json({error: error.message})
     }
@@ -90,10 +100,33 @@ const updateUser = async (req, res) => {
     res.status(200).json(user)
 }
 
+//login user
+const loginUser = async (req, res) => {
+    const {email, password} = req.body
+
+    try {
+        const user = await User.login(email, password)
+
+        //create token
+        const token = createToken(user._id)
+
+        res.status(200).json({email, token})
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
+//logout user
+const logoutUser = async (req, res) => {
+
+}
+
 module.exports = {
     createUser, 
     getUser, 
     getUsers, 
     deleteUser, 
-    updateUser
+    updateUser,
+    loginUser,
+    logoutUser
 }
