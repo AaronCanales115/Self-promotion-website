@@ -11,3 +11,16 @@ body{
     margin: auto;
     font-family: Roboto;
 }
+
+/** login and signup forms**/
+form.signup, form.login {
+    max-width: 60%;
+    margin: 10vh auto;
+    padding: 20px;
+    background: gray;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+

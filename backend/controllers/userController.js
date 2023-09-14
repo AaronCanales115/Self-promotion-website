@@ -116,17 +116,11 @@ const loginUser = async (req, res) => {
     }
 }
 
-//logout user
-const logoutUser = async (req, res) => {
-
-}
-
 module.exports = {
     createUser, 
     getUser, 
     getUsers, 
     deleteUser, 
     updateUser,
-    loginUser,
-    logoutUser
+    loginUser
 }

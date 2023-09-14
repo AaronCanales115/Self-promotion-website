@@ -4,8 +4,20 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useLogout } from '../hooks/useLogout';
+import {useAuthContext} from '../hooks/useAuthContext'
+
 
 function navbar() {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const {logout} = useLogout()
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const {user} = useAuthContext()
+
+  const HandleClick = () => {
+    logout()
+  }
+
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
@@ -19,12 +31,22 @@ function navbar() {
           >
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/explore">Explore</Nav.Link>
-            <Nav.Link href="/about">About us</Nav.Link>
+            <Nav.Link href="/about">About</Nav.Link>
+            
+            {!user && (
             <NavDropdown title="Account" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/signup">Sign up</NavDropdown.Item>
               <NavDropdown.Item href="/login">Login</NavDropdown.Item>
-              <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
             </NavDropdown>
+              )}
+              {user && (
+              <><NavDropdown title="Name" id="navbarScrollingDropdown">
+                <span>{user.email}</span>
+                <NavDropdown.Item href="/login">Account config</NavDropdown.Item>
+                <Button onClick={HandleClick}>Log out</Button>
+              </NavDropdown></>
+               )}
+            
           </Nav>
           <Form className="d-flex">
             <Form.Control
