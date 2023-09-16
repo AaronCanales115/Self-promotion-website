@@ -15,7 +15,7 @@ const userSchema = new Schema({
     skills: Array,
     experiences: Array,
     phoneNumber: String,
-    business: [{type: Schema.Types.ObjectId, ref: 'Business'}]
+    //business: [{type: Schema.Types.ObjectId, ref: 'Business'}]
 
 }, {timestamps: true})
 

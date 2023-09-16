@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/user')
+const businessRoutes = require('./routes/business')
 
 //express app
 const app = express();
@@ -20,6 +21,7 @@ app.use(cors({
 
 //routes
 app.use('/api/user', userRoutes)
+app.use('/api/business', businessRoutes)
 
 //connect to db
 mongoose.connect(process.env.MONGO_LOCAL_URI)

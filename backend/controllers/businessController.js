@@ -3,7 +3,10 @@ const mongoose = require('mongoose')
 
 //get all business
 const getAllBusiness = async (req, res) => {
-    const business = await Business.find({})
+    const userId = req.user._id
+
+    const business = await Business.find({userId}).sort({createdAt: -1})
+
     res.status(200).json(business)
 }
 
@@ -26,10 +29,18 @@ const getBusiness = async (req, res) => {
 
 //create a new business 
 const createBusiness = async (req, res) => {
-    const {} = req.body
+        const {
+            name, description, history, productsServices, photos, videos, 
+            phoneNumber, email, address, coordinatesX, coordinatesY, facebook, whatsapp, instagram
+        } = req.body
 
     try {
-        const business = await Business.create({userName, password, name, lastName, age, gender, professions, skills, experiences, phoneNumber, email})
+        const userId = req.user._id
+        const business = await Business.create({
+            userId, name, description, history, productsServices, photos, videos, 
+            phoneNumber, email, address, location:{coordinatesX, coordinatesY}, socialMedia:{facebook, whatsapp, instagram}
+        })
+
         res.status(200).json(business)
     } catch (error) {
         res.status(400).json({error: error.message})
