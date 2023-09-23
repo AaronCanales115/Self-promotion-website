@@ -32,7 +32,7 @@ const getUser = async (req, res) => {
 
 //create a new user | sign up 
 const createUser = async (req, res) => {
-    const {email, password, name, lastName} = req.body
+    const {email, password, name, lastName, age, gender, professions, skills, experiences, phoneNumber} = req.body
 
     //Show empty fields
     let emptyFields = []
@@ -49,16 +49,17 @@ const createUser = async (req, res) => {
         emptyFields.push('lastName')
     }
     if(emptyFields.length > 0){
-        return res.status(400).json({error: 'Please fill in all the fields', emptyFields})
+        return res.status(400).json({error: 'Please fill in all the fields for basic info', emptyFields})
     }
 
     try {
-        const user = await User.signup(email, password, name, lastName)
+        const user = await User.signup(email, password, name, lastName, age, gender, professions, skills, experiences, phoneNumber)
 
         //create token
         const token = createToken(user._id)
+        const userFullname = name + ' ' + lastName 
 
-        res.status(200).json({email, token})
+        res.status(200).json({email, userFullname, token})
     } catch (error) {
         res.status(400).json({error: error.message})
     }
@@ -109,8 +110,10 @@ const loginUser = async (req, res) => {
 
         //create token
         const token = createToken(user._id)
+        const userFullname = user.name + ' ' + user.lastName
+        
 
-        res.status(200).json({email, token})
+        res.status(200).json({email, userFullname, token})
     } catch (error) {
         res.status(400).json({error: error.message})
     }

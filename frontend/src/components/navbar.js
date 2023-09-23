@@ -6,6 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useLogout } from '../hooks/useLogout';
 import {useAuthContext} from '../hooks/useAuthContext'
+import logo from '../images/business-share-logo.png'
 
 
 function navbar() {
@@ -21,7 +22,9 @@ function navbar() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container fluid>
-        <Navbar.Brand href="#">Logo</Navbar.Brand>
+        <Navbar.Brand href="#">
+          <img src={logo} alt="Business Share Logo" className='logo'></img>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -31,7 +34,6 @@ function navbar() {
           >
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/explore">Explore</Nav.Link>
-            <Nav.Link href="/about">About</Nav.Link>
             
             {!user && (
             <NavDropdown title="Account" id="navbarScrollingDropdown">
@@ -40,10 +42,10 @@ function navbar() {
             </NavDropdown>
               )}
               {user && (
-              <><NavDropdown title="Name" id="navbarScrollingDropdown">
-                <span>{user.email}</span>
-                <NavDropdown.Item href="/login">Account config</NavDropdown.Item>
-                <Button onClick={HandleClick}>Log out</Button>
+              <><NavDropdown title={user.userFullname} id="navbarScrollingDropdown">
+                <NavDropdown.Item href="/profile">My Profile</NavDropdown.Item>
+                <NavDropdown.Item href="/business">My business</NavDropdown.Item>
+                <Button href='/' onClick={HandleClick} >Log out</Button>
               </NavDropdown></>
                )}
             

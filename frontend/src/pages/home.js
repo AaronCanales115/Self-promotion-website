@@ -1,8 +1,11 @@
+import Button from 'react-bootstrap/Button';
 
 const Home = () =>{
     return <div className="home-container">
         <div>
-            <h1>This is the home page</h1>
+            <h1>Let's share your small business with the world!</h1>
+
+            <Button variant="outline-light" size="lg">Get Started ➡</Button>{' '}
         </div>
     </div>
 }

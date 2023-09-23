@@ -20,7 +20,7 @@ const userSchema = new Schema({
 }, {timestamps: true})
 
 //static signup method
-userSchema.statics.signup = async function(email, password, name, lastName) {
+userSchema.statics.signup = async function(email, password, name, lastName, age, gender, professions, skills, experiences, phoneNumber) {
     const exist = await this.findOne({email})
 
 //validations
@@ -38,7 +38,7 @@ userSchema.statics.signup = async function(email, password, name, lastName) {
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt)
 
-    const user = await this.create({email, password: hash, name, lastName})
+    const user = await this.create({email, password: hash, name, lastName, age, gender, professions, skills, experiences, phoneNumber})
 
     return user
 }
