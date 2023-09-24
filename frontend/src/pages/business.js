@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { useBusinessContext } from "../hooks/useBusinessContext"
-
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 
 import AddBusiness from "../components/addBusiness"
 import BusinessDetails from "../components/businessDetails"
@@ -32,14 +33,31 @@ const Business = () =>{
 
 
     return <div className="business-container">
-        <h1>Business</h1>
-        <div className="show-business">
+        <Tabs
+            defaultActiveKey="business"
+            id="tabs"
+            className="mb-3 tabs"
+            fill
+        >
+            <Tab eventKey="business" title="Business">
+            <div className="show-business">
                 {business && business.map((business) => (
                     <BusinessDetails key={business._id} business={business}></BusinessDetails>
                 ))}
-        </div>
+            </div>
+            </Tab>
 
-        <AddBusiness></AddBusiness>
+            <Tab eventKey="createBusiness" title="Create Business">
+                <AddBusiness></AddBusiness>
+            </Tab>
+
+        </Tabs>
+
+    
+        
+        
+
+        
     </div>
 }
 

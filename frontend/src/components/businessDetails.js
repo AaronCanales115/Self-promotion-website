@@ -55,20 +55,119 @@ const BusinessDetails = ({key, business}) => {
         <div className="business-details">
             {!(String(rowBeingEdited) === String(business._id)) ? 
                 <>
-                    <p><strong>Name: </strong>{business.name}</p>
-                    <span className="material-symbols-outlined editF" onClick={onEditPress}>edit</span>
-                    <span className="material-symbols-outlined deleteF" onClick={handleClickDelete}>delete</span>
+                <div className="business-Info">
+                    <label>Name:</label>
+                    <span className='businesData'>{business.name}</span>
+
+                    <label>Description:</label>
+                    <span className='businesData'>{business.description}</span>
+                    
+                    <label>History:</label>
+                    <span className='businesData'>{business.history}</span>
+                    
+                    <label>Products and Services:</label>
+                    <span className='businesData'>{business.productsServices}</span>
+                    
+                    <label>Phone Number:</label>
+                    <span className='businesData'>{business.phoneNumber}</span>
+                    
+                    <label>Email:</label>
+                    <span className='businesData'>{business.email}</span>
+                    
+                    <label>Address:</label>
+                    <span className='businesData'>{business.address}</span>
+
+                    <label>Photos:</label>
+                    <span className='businesData'>{business.photos}</span>
+                    
+
+                    <div className="details-buttons">
+                        <span className="material-symbols-outlined editF" onClick={onEditPress}>Edit</span>
+                        <span className="material-symbols-outlined deleteF" onClick={handleClickDelete}>Delete</span>
+                    </div>
+                </div>
                 </>
                 :
                 <>
-                    <p><label>Name:</label><input type="text"
-                        onChange={(e) => {
-                            setEditedRecord({ ...editedRecord, name: String(e.target.value) })
-                        }
-                        }
-                    ></input></p>
-                    <span className="material-symbols-outlined confirmF" onClick={onEditConfirmClick}>done</span>
-                    <span className="material-symbols-outlined cancelF" onClick={onCancelClick}>cancel</span>
+                    <div className="edit-business">
+                        <div className="edit-inputs">
+                            <label>Name:</label><input type="text"
+                            placeholder={business.name}
+                            onChange={(e) => {
+                                setEditedRecord({ ...editedRecord, name: String(e.target.value) })
+                            }
+                            }
+                            ></input>
+                        </div>
+                        <div className="edit-inputs">
+                            <label>Description:</label><input type="text"
+                            placeholder={business.description}
+                            onChange={(e) => {
+                                setEditedRecord({ ...editedRecord, description: String(e.target.value) })
+                            }
+                            }
+                            ></input>
+                        </div>
+                        <div className="edit-inputs">
+                            <label>History:</label><input type="text"
+                            placeholder={business.history}
+                            onChange={(e) => {
+                                setEditedRecord({ ...editedRecord, history: String(e.target.value) })
+                            }
+                            }
+                            ></input>
+                        </div>
+                        <div className="edit-inputs">
+                            <label>Products and Services:</label><input type="text"
+                            placeholder={business.productsServices}
+                            onChange={(e) => {
+                                setEditedRecord({ ...editedRecord, productsServices: String(e.target.value) })
+                            }
+                            }
+                            ></input>
+                        </div>
+                        <div className="edit-inputs">
+                            <label>Phone Number:</label><input type="text"
+                            placeholder={business.phoneNumber}
+                            onChange={(e) => {
+                                setEditedRecord({ ...editedRecord, phoneNumber: String(e.target.value) })
+                            }
+                            }
+                            ></input>
+                        </div>
+                        <div className="edit-inputs">
+                            <label>email:</label><input type="text"
+                            placeholder={business.email}
+                            onChange={(e) => {
+                                setEditedRecord({ ...editedRecord, email: String(e.target.value) })
+                            }
+                            }
+                            ></input>
+                        </div>
+                        <div className="edit-inputs">
+                            <label>Address:</label><input type="text"
+                            placeholder={business.address}
+                            onChange={(e) => {
+                                setEditedRecord({ ...editedRecord, address: String(e.target.value) })
+                            }
+                            }
+                            ></input>
+                        </div>
+                        <div className="edit-inputs">
+                            <label>Photos:</label><input type="text"
+                            placeholder={business.photos}
+                            onChange={(e) => {
+                                setEditedRecord({ ...editedRecord, photos: String(e.target.value) })
+                            }
+                            }
+                            ></input>
+                        </div>
+                        <div className='edit-buttons'>
+                            <span className="material-symbols-outlined confirmF" onClick={onEditConfirmClick}>done</span>
+                            <span className="material-symbols-outlined cancelF" onClick={onCancelClick}>cancel</span>
+                        </div>
+                    </div>
+                    
                 </>
             }
         </div>

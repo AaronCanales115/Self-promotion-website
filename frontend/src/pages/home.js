@@ -5,7 +5,7 @@ const Home = () =>{
         <div>
             <h1>Let's share your small business with the world!</h1>
 
-            <Button variant="outline-light" size="lg">Get Started ➡</Button>{' '}
+            <Button variant="outline-light" size="lg" href='/signup'>Get Started ➡</Button>{' '}
         </div>
     </div>
 }
