@@ -10,7 +10,7 @@ const BusinessDetails = ({key, business}) => {
     console.log(user)
 
     const handleClickDelete = async () => {
-        const response = await fetch('https://self-promotion-website-345213ff6f06.herokuapp.com/api/business/' + business._id, {
+        const response = await fetch('http://localhost:4000/api/business/' + business._id, {
             headers:{'Authorization': `Bearer ${user.token}`},
             method: 'DELETE'
         })
@@ -29,7 +29,7 @@ const BusinessDetails = ({key, business}) => {
     const onEditConfirmClick = async (e) => {
         e.preventDefault()
         console.log("editedRecord",editedRecord)
-        const response = await fetch('https://self-promotion-website-345213ff6f06.herokuapp.com/api/business/' + business._id, {
+        const response = await fetch('http://localhost:4000/api/business/' + business._id, {
             method: 'PATCH',
             body: JSON.stringify(editedRecord),
             headers: {

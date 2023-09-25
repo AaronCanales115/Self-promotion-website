@@ -9,7 +9,7 @@ const BusinessView = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      fetch(`https://self-promotion-website-345213ff6f06.herokuapp.com/api/explore/${id}`)
+      fetch(`http://localhost:4000/api/explore/${id}`)
         .then((response) => response.json())
         .then((resData) => setData(resData));
     };

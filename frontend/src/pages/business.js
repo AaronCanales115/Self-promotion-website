@@ -17,7 +17,7 @@ const Business = () =>{
     
     useEffect(() => {
         const fetchBusiness = async () => {
-            const response = await fetch('https://self-promotion-website-345213ff6f06.herokuapp.com/api/business',{
+            const response = await fetch('http://localhost:4000/api/business',{
                 headers:{'Authorization': `Bearer ${token}`}
         })
             const json = await response.json()

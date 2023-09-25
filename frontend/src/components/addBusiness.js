@@ -49,7 +49,7 @@ const AddBusiness = () => {
       instagram,
     };
 
-    const response = await fetch("https://self-promotion-website-345213ff6f06.herokuapp.com/api/business", {
+    const response = await fetch("http://localhost:4000/api/business", {
       method: "POST",
       body: JSON.stringify(business),
       headers: {

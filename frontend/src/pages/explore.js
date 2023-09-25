@@ -8,7 +8,7 @@ const Explore = () => {
 
   useEffect(() => {
     const fetchBusiness = async () => {
-      fetch("https://self-promotion-website-345213ff6f06.herokuapp.com/api/explore/bydate")
+      fetch("http://localhost:4000/api/explore/bydate")
         .then((response) => response.json())
         .then((resData) => setBusinessByDate(resData));
     };
