@@ -1,10 +1,12 @@
 const express = require('express');
-const {getBusinessByDate, getBusinessByRating} = require('../controllers/exploreControllers')
+const {getBusinessByDate, getBusinessByRating, getBusiness} = require('../controllers/exploreControllers')
 
 const router = express.Router();
 
-router.get('/', getBusinessByDate)
+router.get('/bydate', getBusinessByDate)
 
-router.get('/', getBusinessByRating)
+router.get('/byrating', getBusinessByRating)
+
+router.get('/:id', getBusiness)
 
 module.exports = router

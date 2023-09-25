@@ -6,9 +6,10 @@ import Home from './pages/home'
 import Navbar from './components/navbar'
 import Login from './pages/login'
 import Signup from './pages/signup'
-//import Account from './pages/account';
 import Profile from './pages/profile'
 import Business from './pages/business';
+import Explore from './pages/explore';
+import BusinessView from './pages/businessView';
 
 function App() {
   const {user} = useAuthContext()
@@ -29,7 +30,7 @@ function App() {
             />
             <Route
               path='/signup'
-              element={<Signup/>}
+              element={!user ? <Signup/> : <Navigate to='/' />}
             />
             <Route
               path='/profile'
@@ -38,6 +39,14 @@ function App() {
             <Route
               path='/business'
               element={<Business/>}
+            />
+            <Route
+              path='/explore'
+              element={<Explore/>}
+            />
+            <Route
+              path='/explore/view/:id'
+              element={<BusinessView/>}
             />
           </Routes>
         </div>

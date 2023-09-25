@@ -27,12 +27,12 @@ userSchema.statics.signup = async function(email, password, name, lastName, age,
     if (exist) {
         throw Error('email already in use')
     }
-    /*if (!validator.isEmail(email)) {
+    if (!validator.isEmail(email)) {
         throw Error('email is not valid')
     }
     if (!validator.isStrongPassword(password)) {
         throw Error('password is not strong enough')
-    }*/
+    }
 
 //password hash
     const salt = await bcrypt.genSalt(10)
