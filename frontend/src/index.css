@@ -318,7 +318,8 @@ form.signup, form.login {
 }
 
 .card-photo{
-    max-width: 100%;
+    width: 286px;
+    height: 180px;
 }
 
 /*business view*/

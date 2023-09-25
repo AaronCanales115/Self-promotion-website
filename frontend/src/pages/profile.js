@@ -10,7 +10,7 @@ const Profile = () =>{
    
     useEffect(() =>{
         const fetchData = async () => {
-        fetch(`http://localhost:4000/api/user/${id}`)
+        fetch(`https://self-promotion-website-345213ff6f06.herokuapp.com/api/user/${id}`)
         .then(response => response.json()) 
         .then(resData => setData(resData))
         

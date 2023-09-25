@@ -26,7 +26,12 @@ app.use('/api/business', businessRoutes)
 app.use('/api/explore', exploreRoutes)
 
 //connect to db
-mongoose.connect(process.env.MONGO_LOCAL_URI)
+//mongoose.connect(process.env.MONGO_URI)
+
+mongoose.connect("mongodb+srv://AaronCanales01:OctaneTW1@milestoneproject2.5b61vwy.mongodb.net/MSP3-Self-Promotion-Website", {
+    useNewUrlParser: true, 
+    useUnifiedTopology: true
+  })
 
 //listen for requests
 app.listen(process.env.PORT || 3005, () => {
